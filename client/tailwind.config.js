@@ -14,6 +14,7 @@ module.exports = {
     extend: {
       fontFamily: {
         primary: ['Ubuntu', ...fontFamily.mono],
+        poppins: ['Poppins', ...fontFamily.mono],
       },
     },
   },
