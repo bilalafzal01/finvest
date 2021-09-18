@@ -1,5 +1,5 @@
 // layouts/Layout2.jsx
 const LayoutTwo = ({ children }) => {
-  return <div>{children}</div>
+  return <div className = "font-primary">{children}</div>
 }
 export default LayoutTwo
