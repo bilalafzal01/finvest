@@ -7,7 +7,9 @@ import { currentUserRouter } from './routes/auth/current-user'
 import { signinRouter } from './routes/auth/signin'
 import { signoutRouter } from './routes/auth/signout'
 import { signupRouter } from './routes/auth/signup'
+
 import { createInvestmentTypeRouter } from './routes/investmentType/createInvestmentType'
+import { deleteInvestmentTypeRouter } from './routes/investmentType/deleteInvestmentType'
 
 import { createInvestmentProjectRouter } from './routes/investment_project/create'
 import { showInvestmentProjectRouter } from './routes/investment_project/show'
@@ -16,6 +18,8 @@ import { updateInvestmentProjectRouter } from './routes/investment_project/updat
 
 import { errorHandler } from './middlewares/error-handler'
 import { NotFoundError } from './errors/not-found-error'
+import { showInvestmentTypes } from './routes/investmentType/showInvestmentTypes'
+import { updateInvestmentTypeRouter } from './routes/investmentType/updateInvestmentType'
 
 const app = express()
 
@@ -35,8 +39,11 @@ app.use(currentUserRouter)
 app.use(signinRouter)
 app.use(signoutRouter)
 app.use(signupRouter)
+// * investment type routes
 app.use(createInvestmentTypeRouter)
-
+app.use(deleteInvestmentTypeRouter)
+app.use(showInvestmentTypes)
+app.use(updateInvestmentTypeRouter)
 // * investment projects routes
 app.use(createInvestmentProjectRouter)
 app.use(showInvestmentProjectRouter)

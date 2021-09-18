@@ -1,9 +1,10 @@
 import express from 'express'
+import { requireAuth } from '../../middlewares/require-auth'
 import { InvestmentType } from '../../models/investmentType'
 
 const router = express.Router()
 
-router.post(`/createInvestmentType`, async(req, res, next) => {
+router.post(`/createInvestmentType`, requireAuth, async(req, res, next) => {
     try {
         const { title, description, projectedROI, currentROI } = req.body
         if(!title || !description || !projectedROI || !currentROI){
@@ -12,7 +13,7 @@ router.post(`/createInvestmentType`, async(req, res, next) => {
         
         const investmentType = InvestmentType.build({ title, description, projectedROI, currentROI })
         await investmentType.save()
-        res.send({message: "Investment Type created successfully"})
+        res.status(201).send(investmentType)
     }
     catch(err){
         console.log(err)
