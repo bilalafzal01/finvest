@@ -4,7 +4,7 @@ import Nav from './navbar/Nav'
 import useSidebar from '../hooks/useSidebar'
 import Sidebar from './sidebar/Sidebar'
 
-export default function Layout({ children }) {
+export default function LayoutOne({ children }) {
   const { isSidebarOpen, toggleSidebar } = useSidebar()
 
   const closeSidebar = useCallback(() => {

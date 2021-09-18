@@ -33,7 +33,7 @@ function NavLarge({ links, isSticky }) {
               </li>
             ))} */}
             <li className="flex items-center px-4 py-2 bg-gray-100 rounded-full">
-              <VscSearch size={20} color="" />
+              <VscSearch size={15} color="" />
               <input
                 type="search"
                 placeholder="Search"
