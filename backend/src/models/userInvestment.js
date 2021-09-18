@@ -29,5 +29,12 @@ var userInvestmentSchema = new schema({
     },
   ],
 })
+userInvestmentSchema.statics.build = (attrs) => {
+  return new UserInvestment(attrs)
+}
+
+const UserInvestment = mongoose.model('UserInvestment', userInvestmentSchema)
+
+export { UserInvestment }
 
 module.exports = mongoose.model('userInvestment', userInvestmentSchema)

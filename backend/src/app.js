@@ -7,6 +7,7 @@ import { currentUserRouter } from './routes/auth/current-user'
 import { signinRouter } from './routes/auth/signin'
 import { signoutRouter } from './routes/auth/signout'
 import { signupRouter } from './routes/auth/signup'
+import { createInvestmentTypeRouter } from './routes/investmentType/createInvestmentType'
 
 import { errorHandler } from './middlewares/error-handler'
 import { NotFoundError } from './errors/not-found-error'
@@ -28,6 +29,7 @@ app.use(currentUserRouter)
 app.use(signinRouter)
 app.use(signoutRouter)
 app.use(signupRouter)
+app.use(createInvestmentTypeRouter)
 
 app.all('*', async (req, res, next) => {
   throw new NotFoundError()
