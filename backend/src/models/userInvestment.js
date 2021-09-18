@@ -1,45 +1,33 @@
-var mongoose = require('mongoose');
+var mongoose = require('mongoose')
 
-
-var schema = mongoose.Schema;
+var schema = mongoose.Schema
 
 var userInvestmentSchema = new schema({
-    userID: {
-        type: Schema.Types.ObjectId,
-        required: true
-    },
-    investments: [{
-        investmentType: {
-            type: String
-        },
-        amount: {
-            type: Number
-        },
-        plan: {
-            type: String
-        },
-        roi: {
-            type: Number
-        },
-        dateInvested: {
-            type: Date, 
-            default: Date.now
-        }
-    }],
-    password: {
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: 'User',
+  },
+  investments: [
+    {
+      investmentType: {
         type: String,
-        required: true
-    },
-    phone: {
+      },
+      amount: {
+        type: Number,
+      },
+      plan: {
         type: String,
-        required: true
+      },
+      roi: {
+        type: Number,
+      },
+      dateInvested: {
+        type: Date,
+        default: Date.now,
+      },
     },
-    role: {
-        type: String,
-        default: 'customer'
-    }
-    
+  ],
 })
 
-
-module.exports = mongoose.model('userInvestment', userInvestmentSchema);
+module.exports = mongoose.model('userInvestment', userInvestmentSchema)

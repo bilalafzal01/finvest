@@ -1,7 +1,6 @@
 import jwt from 'jsonwebtoken'
 
 export const currentUser = (req, res, next) => {
-  console.log(`in currentuser middlware: `, req.session)
   if (!req.session.jwt) {
     return next()
   }
