@@ -1,7 +1,7 @@
 import * as React from 'react'
 import Seo from '../components/Seo'
 
-export default function HomePage() {
+function HomePage() {
   return (
     <>
       <Seo templateTitle="Finvest" />
@@ -11,3 +11,7 @@ export default function HomePage() {
     </>
   )
 }
+
+HomePage.layout = 'L1'
+
+export default HomePage
