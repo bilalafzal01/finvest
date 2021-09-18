@@ -1,5 +1,6 @@
 import express from 'express'
-import { requireAuth } from '../../middlewares/require-auth'
+import { currentUser } from '../../middlewares/current-user'
+import { isAdmin } from '../../middlewares/is-admin'
 import { InvestmentType } from '../../models/investmentType'
 
 const router = express.Router()

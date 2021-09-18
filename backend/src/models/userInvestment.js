@@ -10,7 +10,9 @@ var userInvestmentSchema = new mongoose.Schema(
     investments: [
       {
         investmentType: {
-          type: String,
+          required: true,
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'investmentType',
         },
         amount: {
           type: Number,

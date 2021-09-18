@@ -1,21 +1,11 @@
 import express from 'express'
-import { body } from 'express-validator'
-
-const router = express.Router()
-
-export { router as updateInvestmentProjectRouter }
-
-
-import express from 'express'
 import { currentUser } from '../../middlewares/current-user'
 import { isAdmin } from '../../middlewares/is-admin'
 import { InvestmentProject } from '../../models/investmentProject'
-import { isAdmin } from '../../middlewares/is-admin'
 
 const router = express.Router()
 
-router.post(`/updateInvestmentProject`, currentUser, isAdmin, currentUser,
-isAdmin, async(req, res, next) => {
+router.post(`/updateInvestmentProject`, currentUser, isAdmin, async(req, res, next) => {
     try {
         const {
             investmentProjectID,
