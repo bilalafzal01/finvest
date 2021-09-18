@@ -37,7 +37,7 @@ const investmentProjectSchema = new mongoose.Schema(
       default: 'initialized',
     },
     finalROI: {
-      type: Number,
+      type: String,
     },
   },
   {

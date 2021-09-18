@@ -9,6 +9,7 @@ import { signoutRouter } from './routes/auth/signout'
 import { signupRouter } from './routes/auth/signup'
 
 import { adminSignupRouter } from './routes/auth/admin-signup'
+import { adminSigninRouter } from './routes/auth/admin-signin'
 
 import { createInvestmentTypeRouter } from './routes/investmentType/createInvestmentType'
 
@@ -40,6 +41,7 @@ app.use(signoutRouter)
 app.use(signupRouter)
 
 app.use(adminSignupRouter)
+app.use(adminSigninRouter)
 
 // * investment type routes
 app.use(createInvestmentTypeRouter)

@@ -10,8 +10,8 @@ const router = express.Router()
 
 router.post(
   `/api/investmentprojects/create`,
-  isAdmin,
   currentUser,
+  isAdmin,
   async (req, res) => {
     const {
       deadline,
