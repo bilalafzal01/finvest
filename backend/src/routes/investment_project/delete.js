@@ -1,5 +1,5 @@
 import express from 'express'
-import { requireAuth } from '../../middlewares/is-admin'
+import { requireAuth } from '../../middlewares/require-auth'
 import { InvestmentProject } from '../../models/investmentProject'
 
 const router = express.Router()
