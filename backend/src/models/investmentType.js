@@ -18,7 +18,7 @@ const investmentTypeSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
-  },
+  }
   {
     toJSON: {
       transform(doc, ret) {
