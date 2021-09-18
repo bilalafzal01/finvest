@@ -3,7 +3,7 @@ import { RiAlarmWarningFill } from 'react-icons/ri'
 
 import Seo from '../components/Seo'
 
-export default function NotFoundPage() {
+function NotFoundPage() {
   return (
     <>
       <Seo templateTitle="Not Found" />
@@ -22,3 +22,7 @@ export default function NotFoundPage() {
     </>
   )
 }
+
+NotFoundPage.layout = 'L2'
+
+export default NotFoundPage
