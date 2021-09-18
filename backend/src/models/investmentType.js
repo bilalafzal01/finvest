@@ -12,7 +12,7 @@ var investmentTypeSchema = new schema({
     required: true,
   },
   projectedROI: {
-    type: Number,
+    type: String,
     required: true,
   },
   currentROI: {
@@ -21,4 +21,11 @@ var investmentTypeSchema = new schema({
   },
 })
 
-module.exports = mongoose.model('investmentType', investmentTypeSchema)
+investmentTypeSchema.statics.build = (attrs) => {
+    return new InvestmentType(attrs)
+  }
+  
+  const InvestmentType = mongoose.model('InvestmentType', investmentTypeSchema)
+  
+  export { InvestmentType }
+
