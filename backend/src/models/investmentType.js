@@ -11,14 +11,14 @@ const investmentTypeSchema = new mongoose.Schema(
       required: true,
     },
     projectedROI: {
-      type: Number,
+      type: String,
       required: true,
     },
     currentROI: {
-      type: Number,
+      type: String,
       required: true,
     },
-  }
+  },
   {
     toJSON: {
       transform(doc, ret) {
