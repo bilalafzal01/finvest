@@ -7,7 +7,7 @@ function NavLarge({ links, isSticky }) {
   return (
     <nav
       className={clsx(
-        'text-gray-100 shadow-sm col-span-4 lg:col-span-6 z-10 px-10 xl:px-20 2xl:px-40 relative top-0 bg-gray-900',
+        'text-gray-100 shadow-sm col-span-4 lg:col-span-6 z-10 px-10 xl:px-20 2xl:px-40 relative top-0 bg-gradient-to-br from-gray-700 via-gray-900 to-black',
         isSticky ? 'sticky' : null
       )}
     >
