@@ -15,7 +15,7 @@ export default function LayoutOne({ children }) {
 
   return (
     <section>
-      <div className="grid grid-cols-4 bg-white lg:grid-cols-6 dark:bg-gray-700">
+      <div className="grid grid-cols-4 bg-white font-primary lg:grid-cols-6 dark:bg-gray-700">
         {/* Navbar */}
         <Nav className="" />
         {/* Children */}
@@ -26,7 +26,7 @@ export default function LayoutOne({ children }) {
           onClick={closeSidebar}
           className={clsx(
             isSidebarOpen ? 'filter blur-sm ' : null,
-            'bg-gray-100 min-h-screen col-span-3 lg:col-span-5  border-2 border-red-500'
+            'bg-gray-100 min-h-screen col-span-3 lg:col-span-5'
           )}
         >
           {children}

@@ -1,13 +1,14 @@
 import * as React from 'react'
+import DashboardMain from '../components/dashboard/DashboardMain'
 import Seo from '../components/Seo'
 
 function HomePage() {
   return (
     <>
       <Seo templateTitle="Finvest" />
-      <div>
-        <section>details here</section>
-      </div>
+      <section className="h-full xl:p-8 lg:p-4">
+        <DashboardMain />
+      </section>
     </>
   )
 }

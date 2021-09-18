@@ -3,14 +3,6 @@
 @tailwind utilities;
 
 @layer base {
-  /* inter var - latin */
-  /* @font-face {
-    font-family: 'RubikBold';
-    font-style: normal;
-    font-weight: 700;
-    font-display: optional;
-    src: url('/fonts/Rubik-Bold.woff2') format('woff2');
-  } */
   /* Write your own custom base styles here */
   *,
   *::before,

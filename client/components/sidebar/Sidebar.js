@@ -11,7 +11,7 @@ import {
 
 function sidebar() {
   return (
-    <ul className="flex flex-col min-h-full px-2 space-y-5 lg:pt-20 lg:px-4 xl:px-6">
+    <ul className="flex flex-col min-h-full px-2 space-y-5 shadow-sm lg:pt-20 lg:px-4 xl:px-6">
       <li>
         <h3 className="text-lg text-gray-500">Main Menu</h3>
       </li>
