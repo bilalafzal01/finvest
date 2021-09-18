@@ -1,52 +1,39 @@
 /* eslint-disable no-console */
 import clsx from 'clsx'
-import Link from 'next/link'
 import React from 'react'
 import { VscSearch } from 'react-icons/vsc'
-import { Image } from 'next/image'
 
 function NavLarge({ links, isSticky }) {
   return (
     <nav
       className={clsx(
-        'shadow-sm col-span-4 lg:col-span-6 z-10 px-10 xl:px-20 2xl:px-40 relative top-0 bg-white',
+        'text-gray-100 shadow-sm col-span-4 lg:col-span-6 z-10 px-10 xl:px-20 2xl:px-40 relative top-0 bg-gray-900',
         isSticky ? 'sticky' : null
       )}
     >
-      <ul className="flex items-center justify-between px-8 py-6">
+      <ul className="flex items-center justify-between px-8 py-5">
         {/* Left Brand */}
-        <li>
-          <h1 className="p-0 m-0 text-3xl">
-            <Link href="/">
-              <a className="transition ease-in-out duration-250 dark:text-gray-100 dark:hover:text-primary-300">
-                {'Finvest'}
-              </a>
-            </Link>
-          </h1>
+        <li className="cursor-pointer">
+          <img src="/finvestLogo.svg" alt="finvest" width="85%" />
         </li>
         {/* Right Links */}
         <li>
-          <ul className="flex items-center justify-between xl:space-x-4 lg:space-x-1">
+          <ul className="flex items-center justify-between xl:space-x-6 lg:space-x-2">
             {/* {links.map(({ href, label }) => (
               <li key={`${href}${label}`}>
                 <NavLink href={href} label={label} />
               </li>
             ))} */}
-            <li className="flex items-center px-4 py-2 bg-gray-100 rounded-full">
-              <VscSearch size={15} color="" />
+            <li className="flex items-center px-4 py-3 bg-gray-100 rounded-full">
+              <VscSearch size={15} color="black" />
               <input
                 type="search"
                 placeholder="Search"
                 className="w-[80%] mx-2 bg-gray-100 outline-none"
               />
             </li>
-            <li>
-              {/* <Image
-                src="avatar.svg"
-                width={100}
-                height={100}
-                alt="Picture of the author"
-              /> */}
+            <li className="py-1 text-lg transition duration-100 ease-in-out cursor-pointer hover:border-b-2 hover:border-purple-600">
+              Sign out
             </li>
           </ul>
         </li>

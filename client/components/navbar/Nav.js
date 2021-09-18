@@ -13,7 +13,7 @@ export default function Nav() {
   const { width } = useWindowSize()
 
   return width >= SIZES.LG ? (
-    <NavLarge links={links} isSticky={true} />
+    <NavLarge links={links} isSticky={false} />
   ) : (
     <NavSmall links={links} isSticky={true} />
   )
