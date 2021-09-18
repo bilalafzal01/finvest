@@ -9,6 +9,11 @@ import { signoutRouter } from './routes/auth/signout'
 import { signupRouter } from './routes/auth/signup'
 import { createInvestmentTypeRouter } from './routes/investmentType/createInvestmentType'
 
+import { createInvestmentProjectRouter } from './routes/investment_project/create'
+import { showInvestmentProjectRouter } from './routes/investment_project/show'
+import { deleteInvestmentProjectRouter } from './routes/investment_project/delete'
+import { updateInvestmentProjectRouter } from './routes/investment_project/update'
+
 import { errorHandler } from './middlewares/error-handler'
 import { NotFoundError } from './errors/not-found-error'
 
@@ -25,11 +30,18 @@ app.use(
   })
 )
 
+// * auth
 app.use(currentUserRouter)
 app.use(signinRouter)
 app.use(signoutRouter)
 app.use(signupRouter)
 app.use(createInvestmentTypeRouter)
+
+// * investment projects routes
+app.use(createInvestmentProjectRouter)
+app.use(showInvestmentProjectRouter)
+app.use(deleteInvestmentProjectRouter)
+app.use(updateInvestmentProjectRouter)
 
 app.all('*', async (req, res, next) => {
   throw new NotFoundError()
