@@ -10,7 +10,7 @@ function NotFoundPage() {
 
       <main>
         <section className="bg-dark">
-          <div className="flex flex-col items-center justify-center min-h-screen text-center text-white layout">
+          <div className="flex flex-col items-center justify-center min-h-screen text-center text-gray-800 layout">
             <RiAlarmWarningFill
               size={60}
               className="text-yellow-300 animate-flicker drop-shadow-glow"

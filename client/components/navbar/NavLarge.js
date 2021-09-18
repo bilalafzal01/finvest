@@ -32,6 +32,7 @@ function NavLarge({ links, isSticky }) {
                 className="w-[80%] mx-2 bg-gray-100 outline-none"
               />
             </li>
+            <img src="/user.png" alt="user" width="10%" />
             <li className="py-1 text-lg transition duration-100 ease-in-out cursor-pointer hover:border-b-2 hover:border-purple-600">
               Sign out
             </li>
