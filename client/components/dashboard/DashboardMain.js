@@ -5,8 +5,10 @@ import { GrGoogleWallet } from 'react-icons/gr'
 import { AiOutlineStock } from 'react-icons/ai'
 import { FaEthereum } from 'react-icons/fa'
 import InvestmentDiv from './InvestmentDiv'
+import { useRouter } from 'next/router'
 
 function DashboardMain() {
+  const router = useRouter()
   return (
     <div className="min-h-full bg-white rounded-md shadow-sm xl:p-8 lg:p-4">
       {/* dashboard heading */}
@@ -24,6 +26,10 @@ function DashboardMain() {
           classNames={['bg-gray-100']}
           value="Check your stocks"
           subInfo="New updates"
+          onClick={(e) => {
+            e.preventDefault()
+            router.push(`/portfolio`)
+          }}
         />
         <InfoCard
           icon={<FaEthereum size={55} />}
