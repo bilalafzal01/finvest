@@ -1,10 +1,12 @@
 import express from 'express'
-import { requireAuth } from '../../middlewares/require-auth'
+import { currentUser } from '../../middlewares/current-user'
+import { isAdmin } from '../../middlewares/is-admin'
 import { InvestmentType } from '../../models/investmentType'
 
 const router = express.Router()
 
-router.post(`/showInvestmentTypes`, requireAuth, async(req, res, next) => {
+router.post(`/showInvestmentTypes`, currentUser,
+isAdmin, async(req, res, next) => {
     try {
         const investmentTypes = await InvestmentType.find({})
         res.status(201).send(investmentTypes)
@@ -14,5 +16,5 @@ router.post(`/showInvestmentTypes`, requireAuth, async(req, res, next) => {
     }
 })
 
-export { router as showInvestmentTypes }
+export { router as showInvestmentTypesRouter }
 

@@ -1,6 +1,6 @@
 import express from 'express'
 import { requireAuth } from '../../middlewares/require-auth'
-import { InvestmentProject } from '../../models/investmentType'
+import { InvestmentProject } from '../../models/investmentProject'
 
 const router = express.Router()
 
@@ -14,5 +14,5 @@ router.post(`/showInvestmentProjects`, requireAuth, async(req, res, next) => {
     }
 })
 
-export { router as showInvestmentProjects }
+export { router as showInvestmentProjectsRouter }
 

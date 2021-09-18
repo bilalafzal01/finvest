@@ -7,12 +7,14 @@ export { router as updateInvestmentProjectRouter }
 
 
 import express from 'express'
-import { requireAuth } from '../../middlewares/current-user'
-import { InvestmentType } from '../../models/investmentType'
+import { currentUser } from '../../middlewares/current-user'
+import { isAdmin } from '../../middlewares/is-admin'
+import { InvestmentProject } from '../../models/investmentProject'
+import { isAdmin } from '../../middlewares/is-admin'
 
 const router = express.Router()
 
-router.post(`/updateInvestmentProject`, requireAuth, currentUser,
+router.post(`/updateInvestmentProject`, currentUser, isAdmin, currentUser,
 isAdmin, async(req, res, next) => {
     try {
         const {
@@ -30,16 +32,12 @@ isAdmin, async(req, res, next) => {
             const result = await InvestmentProject.findOneAndUpdate(query, {deadline}, {upsert: true})
             res.status(201).send({"Items updated: ": result.n})
         }
-        if(targer){
+        if(target){
             const result = await InvestmentProject.findOneAndUpdate(query, {target}, {upsert: true})
             res.status(201).send({"Items updated: ": result.n})
         }
         if(shares){
             const result = await InvestmentProject.findOneAndUpdate(query, {shares}, {upsert: true})
-            res.status(201).send({"Items updated: ": result.n})
-        }
-        if(admin){
-            const result = await InvestmentProject.findOneAndUpdate(query, {admin}, {upsert: true})
             res.status(201).send({"Items updated: ": result.n})
         }
         if(admin){
@@ -65,6 +63,6 @@ isAdmin, async(req, res, next) => {
     }
 })
 
-export { router as updateInvestmentTypeRouter }
+export { router as updateInvestmentProjectRouter }
 
 
