@@ -1,34 +1,51 @@
+import clsx from "clsx";
 import Link from "next/link";
 import React, { useState } from "react";
+import { Image } from "next/image";
 import axiosInstance from '../../@axios';
 
 
-function Signin() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+function Signup() {
+    const [email, setEmail] = useState('');
+    const [name, setName] = useState('');
+    const [phone, setPhone] = useState('');
+    const [password, setPassword] = useState('');
+    const [repeatPassword, setRepeatPassword] = useState('');
 
-  const handleChangeEmail = (event) => {
-    setEmail(event.target.value);
-    console.log("in consle");
-  };
-  const handleChangePassword = (event) => {
-    setPassword(event.target.value);
-  };
-
-  const handleSubmit = async(e) => {
-    e.preventDefault()
-    const payload = {
-        email: email,
-        password: password
+    const handleChangeEmail = (event) => {
+        setEmail(event.target.value);
+        console.log("in consle")
     }
-    console.log(payload)
-    if (email !== "" && password != ""){
-        const url = `/api/users/signin`
-        await axiosInstance.post(url,payload).then((res) => console.log(res))
+    const handleChangePassword = (event) => {
+        setPassword(event.target.value);
     }
-}
+    const handleChangeRepeatPassword = (event) => {
+        setRepeatPassword(event.target.value);
+    }
+    const handleChangeName = (event) => {
+        setName(event.target.value);
+    }
+    const handleChangePhone = (event) => {
+        setPhone(event.target.value);
+    }
 
-  return (
+    const handleSubmit = async(e) => {
+        e.preventDefault()
+        console.log("in here")
+        const payload = {
+            email: email,
+            password: password,
+            name: name,
+            phone: phone
+        }
+        console.log(payload)
+        if (email !== "" && password != ""){
+            const url = `/api/users/signup`
+            await axiosInstance.post(url,payload).then((res) => console.log(res))
+        }
+    }
+
+    return (
     <div>
       <nav
         className={
@@ -51,16 +68,20 @@ function Signin() {
             <ul className="flex items-center justify-between xl:space-x-4 lg:space-x-1">
               <li className="flex items-center px-4 py-2 bg-gray-100 rounded-full">
                 <a
-                  className="rounded-3xl px-4 py-2 mr-2"
                   href="/signin"
-                  style={{ color: "white", backgroundColor: "#6D28D9" }}
+                  className="rounded-3xl px-4 py-2"
+                  style={{ color: "#595959" }}
                 >
                   {" "}
                   Sign In{" "}
                 </a>
               </li>
               <li>
-                <a href="/signup" style={{ color: "#595959" }}>
+                <a
+                  className="rounded-3xl px-4 py-2 mr-2"
+                  href="/signup"
+                  style={{ color: "white", backgroundColor: "#6D28D9" }}
+                >
                   {" "}
                   Sign Up{" "}
                 </a>
@@ -95,7 +116,7 @@ function Signin() {
         <div className="grid col-span-1">
           <div className="grid justify-center mb-8">
             <p className="text-4xl mr-8" style={{ color: "#595959" }}>
-              Log In
+              Sign up
             </p>
           </div>
           <div className="grid col-span-1 ml-12">
@@ -111,6 +132,33 @@ function Signin() {
                 style={{ border: "1px solid gray" }}
                 type="text"
                 onChange = {handleChangeEmail}
+                value = {email}
+              ></input>
+              <label
+                className="text-xl mb-2 font-light ml-8"
+                style={{ color: "#595959", display: "block" }}
+              >
+                Name
+              </label>
+              <input
+                className="rounded-lg w-3/4 text-2xl mb-4 ml-8 font-extralight p-2"
+                style={{ border: "1px solid gray" }}
+                type="text"
+                onChange = {handleChangeName}
+                value = {name}
+              ></input>
+              <label
+                className="text-xl mb-2 font-light ml-8"
+                style={{ color: "#595959", display: "block" }}
+              >
+                Phone
+              </label>
+              <input
+                className="rounded-lg w-3/4 text-2xl mb-4 ml-8 font-extralight p-2"
+                style={{ border: "1px solid gray" }}
+                type="text"
+                onChange = {handleChangePhone}
+                value = {phone}
               ></input>
               <label
                 className="text-xl font-light ml-8"
@@ -123,24 +171,37 @@ function Signin() {
                 style={{ border: "1px solid gray" }}
                 type="password"
                 onChange = {handleChangePassword}
+                value = {password}
+              ></input>
+              <label
+                className="text-xl font-light ml-8"
+                style={{ color: "#595959", display: "block" }}
+              >
+                Confirm Password
+              </label>
+              <input
+                className="rounded-lg w-3/4 text-4xl mb-4 ml-8"
+                style={{ border: "1px solid gray" }}
+                type="password"
+                onChange = {handleChangeRepeatPassword}
+                value = {repeatPassword}
               ></input>
               <div className="grid justify-center">
                 <button
                   href="/signup"
-                  className="p-2 rounded-3xl text-2xl  font-light py-2 px-8 mt-2 w-80 mr-12"
+                  className="p-2 rounded-3xl text-2xl  font-light py-2 px-8 mt-2 w-80 mr-12 mb-4"
                   style={{ backgroundColor: "#6D28D9", color: "white" }}
-                  type = "submit"
                 >
-                  Log In
+                  Sign Up
                 </button>
               </div>
             </form>
           </div>
         </div>
       </div>
-      <img className="ml-10" src="image 5.svg"></img>
+      {/* <img className="ml-10" src="image 5.svg"></img> */}
     </div>
   );
 }
 
-export default Signin;
+export default Signup;

@@ -6,5 +6,4 @@ const index = () => {
 }
 
 index.layout = 'L2'
-
 export default index
