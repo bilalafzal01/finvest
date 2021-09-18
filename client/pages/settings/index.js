@@ -7,7 +7,7 @@ function Settings() {
         <div class="bg-white rounded-lg shadow-lg p-5 md:p-20 mx-2">
           <div class="text-center">
             <h2 class="text-2xl tracking-tight leading-10 font-extrabold text-gray-900 sm:text-5xl sm:leading-none md:text-5xl">
-              Settings are <span class="text-indigo-600"> Coming Soon</span>
+              Settings are <span class="text-indigo-600"> Coming Soonn</span>
             </h2>
             <p class="text-md md:text-lg mt-10">
               <a class="hover:underline" href="https://www.quicktoolz.com">
