@@ -44,7 +44,6 @@ router.post(
       process.env.JWT_KEY
     )
     req.session = { jwt: userJwt }
-    console.log(`in currentuser middlware: `, req.session.jwt)
     res.status(201).send(user)
   }
 )

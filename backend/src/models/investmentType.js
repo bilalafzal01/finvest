@@ -1,24 +1,39 @@
 import mongoose from 'mongoose'
 
-var schema = mongoose.Schema
+const investmentTypeSchema = new mongoose.Schema(
+  {
+    title: {
+      type: String,
+      required: true,
+    },
+    description: {
+      type: String,
+      required: true,
+    },
+    projectedROI: {
+      type: Number,
+      required: true,
+    },
+    currentROI: {
+      type: Number,
+      required: true,
+    },
+  },
+  {
+    toJSON: {
+      transform(doc, ret) {
+        ret.id = ret._id
+        delete ret._id
+        delete ret.__v
+      },
+    },
+  }
+)
 
-var investmentTypeSchema = new schema({
-  title: {
-    type: String,
-    required: true,
-  },
-  description: {
-    type: String,
-    required: true,
-  },
-  projectedROI: {
-    type: Number,
-    required: true,
-  },
-  currentROI: {
-    type: Number,
-    required: true,
-  },
-})
+investmentTypeSchema.statics.build = (attrs) => {
+  return new InvestmentType(attrs)
+}
 
-module.exports = mongoose.model('investmentType', investmentTypeSchema)
+const InvestmentType = mongoose.model('investmentType', investmentTypeSchema)
+
+export { InvestmentType }
