@@ -6,6 +6,7 @@ import {
   VscGear,
   VscQuestion,
 } from 'react-icons/vsc'
+import Link from 'next/link'
 
 function sidebar() {
   return (
@@ -17,18 +18,21 @@ function sidebar() {
       </li>
       <li>
         <ul className="space-y-3">
-          <li className="flex items-center px-4 py-2 space-x-4 transition duration-100 ease-out cursor-pointer hover:bg-purple-700 hover:text-white">
-            <VscHome size={20} />
-            <h4 className="text-lg">Dashboard</h4>
-          </li>
-          <li className="flex items-center px-4 py-2 space-x-4 transition duration-100 ease-out cursor-pointer hover:bg-purple-700 hover:text-white">
-            <VscCircuitBoard size={20} />
-            <h4 className="text-lg">Portfolio</h4>
-          </li>
-          <li className="flex items-center px-4 py-2 space-x-4 transition duration-100 ease-out cursor-pointer hover:bg-purple-700 hover:text-white">
-            <VscBellDot size={20} />
-            <h4 className="text-lg">Notifications</h4>
-          </li>
+          <SidebarLink
+            title="Dashboard"
+            href="/"
+            icon={<VscHome size={20} />}
+          />
+          <SidebarLink
+            title="Portfolio"
+            href="/portfolio"
+            icon={<VscCircuitBoard size={20} />}
+          />
+          <SidebarLink
+            title="Notifications"
+            href="/notifications"
+            icon={<VscBellDot size={20} />}
+          />
         </ul>
       </li>
       <li>
@@ -38,14 +42,16 @@ function sidebar() {
       </li>
       <li>
         <ul className="space-y-3">
-          <li className="flex items-center px-4 py-2 space-x-4 transition duration-100 ease-out cursor-pointer hover:bg-purple-700 hover:text-white">
-            <VscQuestion size={20} />
-            <h4 className="text-lg">Help and Support</h4>
-          </li>
-          <li className="flex items-center px-4 py-2 space-x-4 transition duration-100 ease-out cursor-pointer hover:bg-purple-700 hover:text-white">
-            <VscGear size={20} />
-            <h4 className="text-lg">Settings</h4>
-          </li>
+          <SidebarLink
+            title="Help and Support"
+            href="/help"
+            icon={<VscQuestion size={20} />}
+          />
+          <SidebarLink
+            title="Settings"
+            href="/settings"
+            icon={<VscGear size={20} />}
+          />
         </ul>
       </li>
     </ul>
@@ -53,3 +59,16 @@ function sidebar() {
 }
 
 export default sidebar
+
+const SidebarLink = ({ title, href, icon }) => {
+  return (
+    <li className="transition duration-100 ease-out cursor-pointer hover:bg-purple-700 hover:text-white">
+      <Link href={href}>
+        <a className="flex items-center px-4 py-2 space-x-4 ">
+          {icon}
+          <h4 className="text-lg">{title}</h4>
+        </a>
+      </Link>
+    </li>
+  )
+}

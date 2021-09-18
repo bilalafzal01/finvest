@@ -16,7 +16,7 @@ const StockTypeCard = ({
       <div className="flex w-[100%] justify-between items-center">
         <div className="flex items-center space-x-4">
           {imgUrl ? <Image src={imgUrl} width={50} height={50} /> : null}
-          <h4 className="text-2xl font-medium text-center text-gray-700 xl:text-3xl">
+          <h4 className="text-2xl font-medium text-center text-gray-700 ">
             {name}
           </h4>
         </div>

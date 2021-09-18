@@ -1,7 +1,30 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
+import { VscChromeMinimize, VscAdd } from 'react-icons/vsc'
 
 function BuyNowModal({ isOpen, toggleIsOpen, content = { name: 'Tesla' } }) {
+  const [userShare, setUserShare] = useState(5)
+
+  const incrementUserShare = () => {
+    if (userShare + 5 < 50) {
+      setUserShare(userShare + 5)
+    } else {
+      setUserShare(1)
+    }
+  }
+
+  const decrementUserShare = () => {
+    if (userShare - 5 > 0) {
+      setUserShare(userShare - 5)
+    } else {
+      setUserShare(1)
+    }
+  }
+
+  useEffect(() => {
+    setUserShare(5)
+  }, [content])
+
   return (
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog
@@ -43,7 +66,7 @@ function BuyNowModal({ isOpen, toggleIsOpen, content = { name: 'Tesla' } }) {
                 as="h3"
                 className="text-lg font-medium leading-6 text-gray-900"
               >
-                Buy {content?.name}
+                Invest in {content?.name}
               </Dialog.Title>
               <div className="mt-2">
                 <p className="text-sm text-gray-500">
@@ -51,8 +74,29 @@ function BuyNowModal({ isOpen, toggleIsOpen, content = { name: 'Tesla' } }) {
                   an email with all of the details of your order.
                 </p>
               </div>
+              {/* set percentage */}
+              <div className="flex items-end justify-between mt-4">
+                <div className="flex items-center justify-center space-x-4">
+                  <button
+                    className="self-end p-1 bg-gray-200 rounded-lg"
+                    onClick={decrementUserShare}
+                  >
+                    <VscChromeMinimize size={15} />
+                  </button>
+                  <div className="text-2xl text-gray-800">{userShare}%</div>
+                  <button
+                    className="self-end p-1 bg-gray-200 rounded-lg"
+                    onClick={incrementUserShare}
+                  >
+                    <VscAdd size={15} />
+                  </button>
+                </div>
+                <h3 className="text-2xl font-medium text-gray-800">
+                  Rs. {(userShare / 100) * 500000}
+                </h3>
+              </div>
 
-              <div className="mt-4">
+              <div className="flex items-center justify-center mt-8">
                 <button
                   type="button"
                   className="inline-flex justify-center px-4 py-2 text-sm font-medium text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
