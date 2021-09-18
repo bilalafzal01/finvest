@@ -1,9 +1,18 @@
 import express from 'express'
-import { body } from 'express-validator'
 import { requireAuth } from '../../middlewares/require-auth'
+import { InvestmentProject } from '../../models/investmentType'
 
 const router = express.Router()
 
-router.get(`/api/investmentprojects/show`, requireAuth, async (req, res) => {})
+router.post(`/showInvestmentProjects`, requireAuth, async(req, res, next) => {
+    try {
+        const investmentProjects = await InvestmentProject.find({})
+        res.status(201).send(investmentProjects)
+    }
+    catch(err){
+        console.log(err)
+    }
+})
 
-export { router as showInvestmentProjectRouter }
+export { router as showInvestmentProjects }
+
