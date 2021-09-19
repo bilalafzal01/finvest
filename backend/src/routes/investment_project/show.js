@@ -4,15 +4,21 @@ import { InvestmentProject } from '../../models/investmentProject'
 
 const router = express.Router()
 
-router.post(`/api/investmentprojects/show`, requireAuth, async(req, res, next) => {
-    try {
-        const investmentProjects = await InvestmentProject.find({})
-        res.status(201).send(investmentProjects)
+router.get(`/api/investmentprojects/show`, async (req, res, next) => {
+  try {
+    const { investmentType } = req.query
+    let investmentProjects = []
+    if (!investmentType) {
+      investmentProjects = await InvestmentProject.find({})
+    } else {
+      investmentProjects = await InvestmentProject.find({
+        investmentType: investmentType,
+      })
     }
-    catch(err){
-        console.log(err)
-    }
+    res.status(200).send(investmentProjects)
+  } catch (err) {
+    console.log(err)
+  }
 })
 
 export { router as showInvestmentProjectsRouter }
-

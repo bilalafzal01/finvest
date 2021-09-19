@@ -1,5 +1,6 @@
 import express from 'express'
 import 'express-async-errors'
+import cors from 'cors'
 import { json } from 'body-parser'
 import cookieSession from 'cookie-session'
 
@@ -30,6 +31,11 @@ const app = express()
 
 app.set('trust proxy', 1)
 
+app.use(
+  cors({
+    origin: '*',
+  })
+)
 app.use(json())
 app.use(
   cookieSession({
@@ -53,6 +59,7 @@ app.use(createInvestmentTypeRouter)
 app.use(deleteInvestmentTypeRouter)
 app.use(showInvestmentTypesRouter)
 app.use(updateInvestmentTypeRouter)
+
 // * investment projects routes
 app.use(createInvestmentProjectRouter)
 app.use(showInvestmentProjectsRouter)

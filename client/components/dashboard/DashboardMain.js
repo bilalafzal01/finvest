@@ -12,7 +12,7 @@ function DashboardMain() {
   return (
     <div className="min-h-full bg-white rounded-md shadow-sm xl:p-8 lg:p-4">
       {/* dashboard heading */}
-      <DashboardHeading />
+      <DashboardHeading title="Dashboard" />
       {/* Your balance */}
       <div className="grid grid-cols-3 mb-4 xl:mb-8 xl:gap-x-8 lg:gap-x-4">
         <InfoCard

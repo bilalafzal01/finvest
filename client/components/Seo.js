@@ -5,8 +5,7 @@ import { LinkProps } from 'next/link'
 const defaultMeta = {
   title: 'Finvest',
   site_name: 'Investment Platform',
-  description:
-    'Hi! I am Bilal Afzal; a Full Stack Developer & Mentor. I design and code beautifully simple things, and I love what I do.',
+  description: 'This is finvest, the only investment platform you will need!.',
   url: 'http://localhost:3000',
   image: 'http://localhost:3000/favicon/large-og.jpg',
   type: 'website',
