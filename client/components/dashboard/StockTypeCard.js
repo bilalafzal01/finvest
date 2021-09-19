@@ -16,8 +16,11 @@ const StockTypeCard = ({
   investmentProject,
 }) => {
   const { data: progressData } = useProjectProgress(investmentProject)
-  const percentage =
-    progressData.progress * 100 > 100 ? 100 : progressData.progress * 100
+  const percentage = progressData
+    ? progressData?.progress * 100 > 100
+      ? 100
+      : progressData.progress * 100
+    : 0
   return (
     <div className="flex flex-col items-center col-span-1 p-4 border-2 shadow-sm rounded-xl bg-gray-50 xl:p-6">
       <div className="flex w-[100%] justify-between items-center">

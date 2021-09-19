@@ -5,20 +5,22 @@ import { InvestmentType } from '../../models/investmentType'
 
 const router = express.Router()
 
-router.post(`/api/investmenttype/delete`, currentUser,
-isAdmin, async(req, res, next) => {
+router.post(
+  `/api/investmenttype/delete`,
+  currentUser,
+  isAdmin,
+  async (req, res, next) => {
     try {
-        const { investmentTypeID } = req.body
-        if(!investmentTypeID){
-            throw new Error("Payload incomplete")
-        }
-        await InvestmentType.deleteOne({ _id: investmentTypeID });
-        res.send({message: "Investment Type deleted successfully"})
+      const { investmentTypeID } = req.body
+      if (!investmentTypeID) {
+        throw new Error('Payload incomplete')
+      }
+      await InvestmentType.deleteOne({ _id: investmentTypeID })
+      res.send({ message: 'Investment Type deleted successfully' })
+    } catch (err) {
+      console.log(err)
     }
-    catch(err){
-        console.log(err)
-    }
-})
+  }
+)
 
 export { router as deleteInvestmentTypeRouter }
-
