@@ -6,6 +6,9 @@ import thunk from 'redux-thunk'
 
 const initialState = {
   user: {},
+  wallet: {
+    balance: 45000,
+  },
   userInvestments: [],
   investmentTypes: [],
   investmentProjects: [],

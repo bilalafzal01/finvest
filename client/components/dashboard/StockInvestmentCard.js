@@ -4,9 +4,18 @@ import Image from 'next/image'
 import clsx from 'clsx'
 import StockTypeCard from './StockTypeCard'
 import StandardButton from '../buttons/StandardButton'
+import useInvestmentProjects from '../../hooks/useInvestmentProjects'
 
-const StockInvestmentCard = ({ toggleIsOpen, setContent }) => {
-  return (
+const StockInvestmentCard = ({ toggleIsOpen, setContent, data = null }) => {
+  const {
+    data: investmentProjects,
+    isLoading,
+    error,
+  } = useInvestmentProjects(data?.id)
+
+  console.log(investmentProjects)
+
+  return data ? (
     <Disclosure>
       <Disclosure.Button
         as="div"
@@ -22,11 +31,9 @@ const StockInvestmentCard = ({ toggleIsOpen, setContent }) => {
               width={35}
               height={35}
             />
-            <h3 className="text-2xl text-gray-800">Stocks</h3>
+            <h3 className="text-2xl text-gray-800">{data.title}</h3>
           </div>
-          <p className="text-lg">
-            Invest in a variety of local and international stocks
-          </p>
+          <p className="text-lg">{data.description}</p>
           <StandardButton
             classNames={[
               'bg-purple-700',
@@ -70,7 +77,7 @@ const StockInvestmentCard = ({ toggleIsOpen, setContent }) => {
         </div>
       </Disclosure.Panel>
     </Disclosure>
-  )
+  ) : null
 }
 
 export default StockInvestmentCard

@@ -6,12 +6,12 @@ import { InvestmentType } from '../../models/investmentType'
 const router = express.Router()
 
 router.post(
-  `/createInvestmentType`,
+  `/api/investmenttype/create`,
   currentUser,
   isAdmin,
   async (req, res, next) => {
     try {
-      const { title, description, projectedROI, currentROI } = req.body
+      const { title, description, projectedROI, currentROI, icon } = req.body
       if (!title || !description || !projectedROI || !currentROI) {
         throw new Error('Payload incomplete')
       }
@@ -21,6 +21,7 @@ router.post(
         description,
         projectedROI,
         currentROI,
+        icon,
       })
       await investmentType.save()
       res.status(201).send(investmentType)

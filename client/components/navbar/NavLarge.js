@@ -24,7 +24,7 @@ function NavLarge({ links, isSticky }) {
                 <NavLink href={href} label={label} />
               </li>
             ))} */}
-            <li className="flex items-center px-4 py-3 bg-gray-100 rounded-full">
+            <li className="flex items-center px-4 py-3 text-gray-800 bg-gray-100 rounded-full">
               <VscSearch size={15} color="black" />
               <input
                 type="search"

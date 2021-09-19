@@ -2,6 +2,10 @@ import mongoose from 'mongoose'
 
 const investmentProjectSchema = new mongoose.Schema(
   {
+    title: {
+      type: String,
+      required: true,
+    },
     deadline: {
       type: String,
       required: true,
@@ -21,6 +25,14 @@ const investmentProjectSchema = new mongoose.Schema(
         },
       },
     ],
+    icon: {
+      type: String,
+      required: true,
+    },
+    basePrice: {
+      type: Number,
+      required: true,
+    },
     admin: {
       required: true,
       type: mongoose.Schema.Types.ObjectId,
