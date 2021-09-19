@@ -25,11 +25,14 @@ import { createInvestmentTypeRouter } from './routes/investmentType/createInvest
 import { getUserRouter } from './routes/user/getUser'
 import { updateUserRouter } from './routes/user/update'
 
+import { createEasyInvestmentRouter } from './routes/easyInvestment/create'
+
 import { createUserInvestmentRouter } from './routes/userInvestment/create'
 
 import { errorHandler } from './middlewares/error-handler'
 import { NotFoundError } from './errors/not-found-error'
 import { showUserInvestmentRouter } from './routes/userInvestment/show'
+import { showEasyUserInvestmentRouter } from './routes/easyInvestment/show-user'
 
 const app = express()
 
@@ -74,6 +77,9 @@ app.use(getUserRouter)
 
 app.use(createUserInvestmentRouter)
 app.use(showUserInvestmentRouter)
+
+app.use(createEasyInvestmentRouter)
+app.use(showEasyUserInvestmentRouter)
 
 app.all('*', async (req, res, next) => {
   throw new NotFoundError()

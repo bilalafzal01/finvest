@@ -32,9 +32,10 @@ function BuyNowModal({ isOpen, toggleIsOpen, content = { name: 'Tesla' } }) {
   }
 
   const confirmPayment = async () => {
-    console.log(`click`)
     const data = await postData()
-    console.log(data)
+    if (data) {
+      window.location.reload()
+    }
   }
   const postData = async () => {
     if (userShare * content?.price <= user?.credit) {

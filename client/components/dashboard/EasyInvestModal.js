@@ -1,6 +1,8 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { VscChromeMinimize, VscAdd } from 'react-icons/vsc'
+import axios from '../../@axios'
+import useUser from './../../hooks/useUser'
 
 function EasyInvestModal({
   isOpen,
@@ -22,6 +24,30 @@ function EasyInvestModal({
       setUserShare(userShare - 5000)
     } else {
       setUserShare(10000)
+    }
+  }
+
+  if (process.browser) {
+    var { user, isLoading, error } = useUser(localStorage.getItem('userId'))
+  }
+
+  const confirmPayment = async () => {
+    const data = await postData()
+    if (data) {
+      window.location.reload()
+    }
+  }
+
+  const postData = async () => {
+    if (userShare <= user?.credit) {
+      const res = await axios.post(`/api/easyinvestment/create`, {
+        userId: user.id,
+        amount: userShare,
+      })
+      toggleIsOpen()
+      return res.data
+    } else {
+      return null
     }
   }
 
@@ -97,7 +123,7 @@ function EasyInvestModal({
                 <button
                   type="button"
                   className="inline-flex justify-center px-4 py-2 text-sm font-medium text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
-                  onClick={toggleIsOpen}
+                  onClick={confirmPayment}
                 >
                   Confirm Payment
                 </button>
