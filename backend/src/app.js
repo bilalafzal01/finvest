@@ -33,6 +33,7 @@ import { errorHandler } from './middlewares/error-handler'
 import { NotFoundError } from './errors/not-found-error'
 import { showUserInvestmentRouter } from './routes/userInvestment/show'
 import { showEasyUserInvestmentRouter } from './routes/easyInvestment/show-user'
+import { progressInvestmentProjectsRouter } from './routes/investment_project/progress'
 
 const app = express()
 
@@ -69,6 +70,7 @@ app.use(updateInvestmentTypeRouter)
 
 // * investment projects routes
 app.use(createInvestmentProjectRouter)
+app.use(progressInvestmentProjectsRouter)
 app.use(showInvestmentProjectsRouter)
 app.use(deleteInvestmentProjectRouter)
 app.use(updateInvestmentProjectRouter)

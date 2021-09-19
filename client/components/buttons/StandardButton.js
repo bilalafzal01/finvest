@@ -9,7 +9,7 @@ function StandardButton({ onClick, children, classNames = [] }) {
         if (onClick) onClick(e)
       }}
       className={clsx(
-        'inline-flex justify-center px-4 py-2 font-medium text-white border border-transparent rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 ',
+        'inline-flex justify-center px-4 py-2 font-medium border border-transparent rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 text-white',
         ...classNames
       )}
     >
