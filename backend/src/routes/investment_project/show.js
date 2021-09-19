@@ -4,7 +4,7 @@ import { InvestmentProject } from '../../models/investmentProject'
 
 const router = express.Router()
 
-router.post(`/showInvestmentProjects`, requireAuth, async(req, res, next) => {
+router.post(`/api/investmentprojects/show`, requireAuth, async(req, res, next) => {
     try {
         const investmentProjects = await InvestmentProject.find({})
         res.status(201).send(investmentProjects)

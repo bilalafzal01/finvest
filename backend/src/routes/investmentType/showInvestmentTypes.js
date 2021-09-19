@@ -5,7 +5,7 @@ import { InvestmentType } from '../../models/investmentType'
 
 const router = express.Router()
 
-router.post(`/showInvestmentTypes`, currentUser,
+router.post(`/api/investmenttype/show`, currentUser,
 isAdmin, async(req, res, next) => {
     try {
         const investmentTypes = await InvestmentType.find({})
