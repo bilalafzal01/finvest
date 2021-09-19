@@ -5,7 +5,7 @@ import { InvestmentProject } from '../../models/investmentProject'
 
 const router = express.Router()
 
-router.post(`/updateInvestmentProject`, currentUser, isAdmin, async(req, res, next) => {
+router.post(`/api/investmentprojects/update`, currentUser, isAdmin, async(req, res, next) => {
     try {
         const {
             investmentProjectID,

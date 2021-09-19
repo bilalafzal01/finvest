@@ -25,6 +25,10 @@ const userSchema = new mongoose.Schema(
       default: 'user',
       required: true,
     },
+    credit: {
+      type: Number,
+      default: 1000000
+    }
   },
   {
     toJSON: {

@@ -4,7 +4,7 @@ import { InvestmentProject } from '../../models/investmentProject'
 
 const router = express.Router()
 
-router.post(`/deleteInvestmentType`, requireAuth, async(req, res, next) => {
+router.post(`/api/investmentprojects/delete`, requireAuth, async(req, res, next) => {
     try {
         const { investmentProjectID } = req.body
         if(!investmentProjectID){

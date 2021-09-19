@@ -5,7 +5,7 @@ import { InvestmentType } from '../../models/investmentType'
 
 const router = express.Router()
 
-router.post(`/deleteInvestmentType`, currentUser,
+router.post(`/api/investmenttype/delete`, currentUser,
 isAdmin, async(req, res, next) => {
     try {
         const { investmentTypeID } = req.body
