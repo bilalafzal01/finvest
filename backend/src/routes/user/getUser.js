@@ -5,7 +5,7 @@ import { User } from '../../models/user'
 
 const router = express.Router()
 
-router.post(`/api/users/getuser`, async(req, res,next) => {
+router.post(`/api/users/getuser`, currentUser, isAdmin, async(req, res,next) => {
     try{
         const { userID } = req.body
         const query = {'_id': userID};
