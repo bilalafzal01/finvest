@@ -21,6 +21,8 @@ import { updateInvestmentTypeRouter } from './routes/investmentType/updateInvest
 import { deleteInvestmentTypeRouter } from './routes/investmentType/deleteInvestmentType'
 import { createInvestmentTypeRouter } from './routes/investmentType/createInvestmentType'
 
+import { getUserRouter } from './routes/user/getUser'
+
 import { errorHandler } from './middlewares/error-handler'
 import { NotFoundError } from './errors/not-found-error'
 
@@ -56,6 +58,8 @@ app.use(createInvestmentProjectRouter)
 app.use(showInvestmentProjectsRouter)
 app.use(deleteInvestmentProjectRouter)
 app.use(updateInvestmentProjectRouter)
+
+app.use(getUserRouter)
 
 app.all('*', async (req, res, next) => {
   throw new NotFoundError()
