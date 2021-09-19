@@ -14,7 +14,6 @@ function DashboardMain() {
 
   if (process.browser) {
     var { user, isLoading, error } = useUser(localStorage.getItem('userId'))
-    console.log(user)
   }
 
   return (

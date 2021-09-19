@@ -23,11 +23,13 @@ import { deleteInvestmentTypeRouter } from './routes/investmentType/deleteInvest
 import { createInvestmentTypeRouter } from './routes/investmentType/createInvestmentType'
 
 import { getUserRouter } from './routes/user/getUser'
+import { updateUserRouter } from './routes/user/update'
 
 import { createUserInvestmentRouter } from './routes/userInvestment/create'
 
 import { errorHandler } from './middlewares/error-handler'
 import { NotFoundError } from './errors/not-found-error'
+import { showUserInvestmentRouter } from './routes/userInvestment/show'
 
 const app = express()
 
@@ -71,6 +73,7 @@ app.use(updateInvestmentProjectRouter)
 app.use(getUserRouter)
 
 app.use(createUserInvestmentRouter)
+app.use(showUserInvestmentRouter)
 
 app.all('*', async (req, res, next) => {
   throw new NotFoundError()

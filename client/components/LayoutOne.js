@@ -17,7 +17,6 @@ export default function LayoutOne({ children }) {
 
   if (process.browser) {
     var { user, isLoading, error } = useUser(localStorage.getItem('userId'))
-    console.log(user, isLoading, error)
     if (!user && !isLoading) {
       router.push(`/signin`)
     }

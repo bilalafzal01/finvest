@@ -7,28 +7,29 @@ var userInvestmentSchema = new mongoose.Schema(
       required: true,
       ref: 'User',
     },
-    investments: [
-      {
-        investmentType: {
-          required: true,
-          type: mongoose.Schema.Types.ObjectId,
-          ref: 'investmentType',
-        },
-        amount: {
-          type: Number,
-        },
-        plan: {
-          type: String,
-        },
-        roi: {
-          type: Number,
-        },
-        dateInvested: {
-          type: Date,
-          default: Date.now,
-        },
-      },
-    ],
+    investmentType: {
+      required: true,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'investmentType',
+    },
+    investmentProject: {
+      required: true,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'investmentProject',
+    },
+    amount: {
+      type: Number,
+    },
+    plan: {
+      type: String,
+    },
+    roi: {
+      type: Number,
+    },
+    dateInvested: {
+      type: Date,
+      default: Date.now,
+    },
   },
   {
     toJSON: {
@@ -40,8 +41,6 @@ var userInvestmentSchema = new mongoose.Schema(
     },
   }
 )
-
-module.exports = mongoose.model('userInvestment', userInvestmentSchema)
 
 userInvestmentSchema.statics.build = (attrs) => {
   return new UserInvestment(attrs)

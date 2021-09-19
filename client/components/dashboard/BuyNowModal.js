@@ -1,6 +1,8 @@
 import React, { Fragment, useEffect, useState } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { VscChromeMinimize, VscAdd } from 'react-icons/vsc'
+import axios from '../../@axios'
+import useUser from './../../hooks/useUser'
 
 function BuyNowModal({ isOpen, toggleIsOpen, content = { name: 'Tesla' } }) {
   const [userShare, setUserShare] = useState(5)
@@ -24,6 +26,32 @@ function BuyNowModal({ isOpen, toggleIsOpen, content = { name: 'Tesla' } }) {
   useEffect(() => {
     setUserShare(5)
   }, [content])
+
+  if (process.browser) {
+    var { user, isLoading, error } = useUser(localStorage.getItem('userId'))
+  }
+
+  const confirmPayment = async () => {
+    console.log(`click`)
+    const data = await postData()
+    console.log(data)
+  }
+  const postData = async () => {
+    if (userShare * content?.price <= user?.credit) {
+      const res = await axios.post(`/api/userInvestment/create`, {
+        userId: user.id,
+        investmentType: content.investmentType,
+        investmentProject: content.investmentProject,
+        amount: userShare * content?.price,
+        plan: 'Plan 1',
+        roi: 0,
+      })
+      toggleIsOpen()
+      return res.data
+    } else {
+      return null
+    }
+  }
 
   return (
     <Transition appear show={isOpen} as={Fragment}>
@@ -102,9 +130,11 @@ function BuyNowModal({ isOpen, toggleIsOpen, content = { name: 'Tesla' } }) {
                 <button
                   type="button"
                   className="inline-flex justify-center px-4 py-2 text-sm font-medium text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
-                  onClick={toggleIsOpen}
+                  onClick={confirmPayment}
                 >
-                  Confirm Payment
+                  {user?.credit >= userShare * content?.price
+                    ? 'Confirm Payment'
+                    : 'Insufficient Balance'}
                 </button>
               </div>
             </div>

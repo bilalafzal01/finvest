@@ -72,6 +72,8 @@ const StockInvestmentCard = ({
                 return (
                   <StockTypeCard
                     key={item.id}
+                    investmentProject={item.id}
+                    investmentType={item.investmentType}
                     name={item.title}
                     imgUrl={item.icon}
                     price={item.basePrice}

@@ -11,8 +11,9 @@ const StockTypeCard = ({
   roi,
   toggleIsOpen,
   setContent,
+  investmentType,
+  investmentProject,
 }) => {
-  console.log(`price is: `, price)
   return (
     <div className="flex flex-col items-center col-span-1 p-4 border-2 shadow-sm rounded-xl bg-gray-50 xl:p-6">
       <div className="flex w-[100%] justify-between items-center">
@@ -41,6 +42,8 @@ const StockTypeCard = ({
             setContent({
               name,
               price: price,
+              investmentType: investmentType,
+              investmentProject: investmentProject,
             })
           }}
           type="button"
