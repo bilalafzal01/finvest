@@ -17,20 +17,15 @@ function InvestmentDiv() {
     <div className="grid grid-cols-3 mb-4 xl:mb-8 xl:gap-x-8 lg:gap-x-4 gap-y-4 xl:gap-y-8">
       {isLoading ? <div>loading</div> : null}
       {data
-        ? data.map((item) => (
+        ? data.map((item, index) => (
             <StockInvestmentCard
               toggleIsOpen={toggleIsOpen}
               setContent={setContent}
               data={item}
+              index={index}
             />
           ))
         : null}
-
-      <RealEstateInvestmentCard
-        toggleIsOpen={toggleIsOpen}
-        setContent={setContent}
-      />
-      <PIBInvestmentCard toggleIsOpen={toggleIsOpen} setContent={setContent} />
 
       <BuyNowModal
         isOpen={isOpen}
