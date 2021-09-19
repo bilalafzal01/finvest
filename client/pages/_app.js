@@ -1,6 +1,7 @@
 import 'tailwindcss/tailwind.css'
 import LayoutOne from '../components/LayoutOne'
 import LayoutTwo from '../components/LayoutTwo'
+import { wrapper } from '../redux/store'
 
 const layouts = {
   L1: LayoutOne,
@@ -16,4 +17,4 @@ function MyApp({ Component, pageProps }) {
   )
 }
 
-export default MyApp
+export default wrapper.withRedux(MyApp)
