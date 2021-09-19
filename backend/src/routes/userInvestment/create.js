@@ -25,6 +25,7 @@ router.post(
       })
       await userInvestment.save()
       res.status(201).send(userInvestment)
+      console.log("investment created")
     } catch (err) {
       console.log(err)
     }
