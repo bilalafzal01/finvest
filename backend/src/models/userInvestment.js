@@ -14,11 +14,6 @@ var userInvestmentSchema = new mongoose.Schema(
           type: mongoose.Schema.Types.ObjectId,
           ref: 'investmentType',
         },
-        invetmentProject: {
-          required: true,
-          type: mongoose.Schema.Types.ObjectId,
-          ref: 'investmentProject',
-        },
         amount: {
           type: Number,
         },
