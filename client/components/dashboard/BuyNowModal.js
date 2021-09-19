@@ -83,7 +83,9 @@ function BuyNowModal({ isOpen, toggleIsOpen, content = { name: 'Tesla' } }) {
                   >
                     <VscChromeMinimize size={15} />
                   </button>
-                  <div className="text-2xl text-gray-800">{userShare}%</div>
+                  <div className="text-2xl text-gray-800">
+                    {userShare} share(s)
+                  </div>
                   <button
                     className="self-end p-1 bg-gray-200 rounded-lg"
                     onClick={incrementUserShare}
@@ -92,7 +94,7 @@ function BuyNowModal({ isOpen, toggleIsOpen, content = { name: 'Tesla' } }) {
                   </button>
                 </div>
                 <h3 className="text-2xl font-medium text-gray-800">
-                  Rs. {(userShare / 100) * 500000}
+                  Rs. {userShare * content?.price}
                 </h3>
               </div>
 

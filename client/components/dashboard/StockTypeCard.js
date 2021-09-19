@@ -1,6 +1,7 @@
 import React from 'react'
 import clsx from 'clsx'
 import Image from 'next/image'
+import { numberWithCommas } from '../../lib/index'
 
 const StockTypeCard = ({
   name = '',
@@ -11,6 +12,7 @@ const StockTypeCard = ({
   toggleIsOpen,
   setContent,
 }) => {
+  console.log(`price is: `, price)
   return (
     <div className="flex flex-col items-center col-span-1 p-4 border-2 shadow-sm rounded-xl bg-gray-50 xl:p-6">
       <div className="flex w-[100%] justify-between items-center">
@@ -20,7 +22,9 @@ const StockTypeCard = ({
             {name}
           </h4>
         </div>
-        <span className="text-2xl xl:text-3xl">{price}</span>
+        <span className="text-2xl xl:text-3xl">
+          Rs. {numberWithCommas(price)}
+        </span>
       </div>
       <div className="text-md text-gray-500 flex w-[100%] items-baseline justify-between my-4 pb-4 border-b-2 ">
         {/* Change */}
@@ -36,6 +40,7 @@ const StockTypeCard = ({
             toggleIsOpen()
             setContent({
               name,
+              price: price,
             })
           }}
           type="button"

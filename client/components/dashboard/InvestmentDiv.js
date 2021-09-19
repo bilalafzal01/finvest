@@ -11,7 +11,6 @@ function InvestmentDiv() {
   const [content, setContent] = useState(null)
 
   const { data, isLoading, error } = useInvestmentTypes()
-  console.log(data)
 
   return (
     <div className="grid grid-cols-3 mb-4 xl:mb-8 xl:gap-x-8 lg:gap-x-4 gap-y-4 xl:gap-y-8">
@@ -19,6 +18,7 @@ function InvestmentDiv() {
       {data
         ? data.map((item, index) => (
             <StockInvestmentCard
+              key={item.id}
               toggleIsOpen={toggleIsOpen}
               setContent={setContent}
               data={item}

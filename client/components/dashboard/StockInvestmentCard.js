@@ -68,17 +68,20 @@ const StockInvestmentCard = ({
       <Disclosure.Panel className={clsx('col-span-3')}>
         <div className="grid grid-cols-3 gap-4 xl:gap-8">
           {investmentProjects
-            ? investmentProjects.map((item) => (
-                <StockTypeCard
-                  name={item.title}
-                  imgUrl={item.icon}
-                  price={`Rs.${item.basePrice}`}
-                  change="+6%"
-                  roi={`+${item.finalROI}%`}
-                  setContent={setContent}
-                  toggleIsOpen={toggleIsOpen}
-                />
-              ))
+            ? investmentProjects.map((item) => {
+                return (
+                  <StockTypeCard
+                    key={item.id}
+                    name={item.title}
+                    imgUrl={item.icon}
+                    price={item.basePrice}
+                    change="+6%"
+                    roi={`+${item.finalROI}%`}
+                    setContent={setContent}
+                    toggleIsOpen={toggleIsOpen}
+                  />
+                )
+              })
             : null}
         </div>
       </Disclosure.Panel>

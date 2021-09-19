@@ -2,8 +2,10 @@
 import clsx from 'clsx'
 import React from 'react'
 import { VscSearch } from 'react-icons/vsc'
+import { useRouter } from 'next/router'
 
 function NavLarge({ links, isSticky }) {
+  const router = useRouter()
   return (
     <nav
       className={clsx(
@@ -33,7 +35,14 @@ function NavLarge({ links, isSticky }) {
               />
             </li>
             <img src="/user.png" alt="user" width="10%" />
-            <li className="py-1 text-lg transition duration-100 ease-in-out cursor-pointer hover:border-b-2 hover:border-purple-600">
+            <li
+              onClick={() => {
+                console.log(`hey`)
+                localStorage.removeItem('userId')
+                router.push(`/signin`)
+              }}
+              className="py-1 text-lg transition duration-100 ease-in-out cursor-pointer hover:border-b-2 hover:border-purple-600"
+            >
               Sign out
             </li>
           </ul>

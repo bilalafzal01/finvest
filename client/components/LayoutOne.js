@@ -3,6 +3,8 @@ import clsx from 'clsx'
 import Nav from './navbar/Nav'
 import useSidebar from '../hooks/useSidebar'
 import Sidebar from './sidebar/Sidebar'
+import useUser from '../hooks/useUser'
+import router from 'next/router'
 
 export default function LayoutOne({ children }) {
   const { isSidebarOpen, toggleSidebar } = useSidebar()
@@ -12,6 +14,14 @@ export default function LayoutOne({ children }) {
       toggleSidebar()
     }
   }, [isSidebarOpen, toggleSidebar])
+
+  if (process.browser) {
+    var { user, isLoading, error } = useUser(localStorage.getItem('userId'))
+    console.log(user, isLoading, error)
+    if (!user && !isLoading) {
+      router.push(`/signin`)
+    }
+  }
 
   return (
     <section>

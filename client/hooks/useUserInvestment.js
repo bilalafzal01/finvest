@@ -6,9 +6,9 @@ const fetcher = (url) =>
     return res.data
   })
 
-function useInvestmentTypes() {
+function useInvestmentTypes(userId) {
   const { data, error } = useSWR(
-    `http://localhost:5000/api/investmenttype/show`,
+    `http://localhost:5000/api/userinvestments/show?user=${userId}`,
     fetcher
   )
   return {
