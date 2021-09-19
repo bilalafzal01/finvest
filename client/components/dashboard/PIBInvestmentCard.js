@@ -3,6 +3,7 @@ import { Disclosure } from '@headlessui/react'
 import Image from 'next/image'
 import clsx from 'clsx'
 import StockTypeCard from './StockTypeCard'
+import StandardButton from '../buttons/StandardButton'
 
 const PIBInvestmentCard = ({ toggleIsOpen, setContent }) => (
   <Disclosure>
@@ -20,12 +21,15 @@ const PIBInvestmentCard = ({ toggleIsOpen, setContent }) => (
         <p className="text-lg">
           From corporates to governments, PIB is a great way to invest
         </p>
-        <button
-          type="button"
-          className="inline-flex justify-center px-4 py-2 font-medium text-white bg-pink-700 border border-transparent rounded-md hover:bg-pink-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-pink-500"
+        <StandardButton
+          classNames={[
+            'bg-pink-700',
+            'hover:bg-pink-600',
+            'focus-visible:ring-pink-500',
+          ]}
         >
           Explore
-        </button>
+        </StandardButton>
       </div>
     </Disclosure.Button>
     <Disclosure.Panel className={clsx('col-span-3')}>

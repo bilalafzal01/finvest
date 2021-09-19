@@ -15,21 +15,27 @@ router.post(
   async (req, res) => {
     const {
       deadline,
+      title,
       target,
       shares,
       admin,
       status,
       finalROI,
+      basePrice,
       investmentType,
+      icon,
     } = req.body
     const investmentProject = InvestmentProject.build({
       deadline,
       target,
+      title,
       shares,
       admin,
       status,
+      basePrice,
       finalROI,
       investmentType,
+      icon,
     })
     await investmentProject.save()
     res.status(201).send(investmentProject)
